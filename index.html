@@ -155,7 +155,7 @@
       width: 100%;
       z-index: 1000;
       transition: background-color var(--transition), box-shadow var(--transition);
-      padding: 16px 0;
+      padding: 20px 0;
     }
     .header.scrolled {
       background-color: rgba(10, 10, 15, 0.95);
@@ -177,10 +177,24 @@
       color: var(--color-text);
       letter-spacing: 2px;
       text-transform: uppercase;
+      display: inline-block;
+      position: relative;
+      padding: 4px 0;
     }
     .logo span {
       color: var(--color-magenta);
       text-shadow: var(--shadow-glow-magenta);
+    }
+    .logo::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-magenta), var(--color-cyan));
+      opacity: 0.6;
+      box-shadow: 0 0 8px var(--color-magenta), 0 0 16px var(--color-cyan);
     }
     .nav-desktop {
       display: none;
@@ -344,11 +358,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: 65% center;
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(10, 10, 15, 0.95) 0%, rgba(10, 10, 15, 0.8) 50%, rgba(10, 10, 15, 0.4) 100%);
+      background: linear-gradient(90deg, rgba(10, 10, 15, 0.98) 0%, rgba(10, 10, 15, 0.85) 35%, rgba(10, 10, 15, 0.5) 60%, rgba(10, 10, 15, 0.2) 100%);
       z-index: 1;
     }
     .hero-content {
@@ -467,7 +482,7 @@
     }
     .promo-card {
       background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: var(--radius-lg);
       padding: 40px 32px;
       position: relative;
@@ -486,7 +501,7 @@
       transition: opacity var(--transition);
     }
     .promo-card:hover, .promo-card:focus-within {
-      border-color: rgba(255, 0, 255, 0.3);
+      border-color: var(--color-magenta);
       transform: translateY(-4px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--shadow-glow-magenta);
     }
@@ -576,11 +591,23 @@
       transform: scaleX(1);
     }
     .feature-icon {
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       margin-bottom: 20px;
       color: var(--color-cyan);
-      filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));
+      filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+    }
+    .feature-icon.magenta {
+      color: var(--color-magenta);
+      filter: drop-shadow(0 0 10px rgba(255, 0, 255, 0.5));
+    }
+    .feature-icon.orange {
+      color: var(--color-orange);
+      filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.5));
+    }
+    .feature-icon.violet {
+      color: var(--color-violet);
+      filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
     }
     .feature-card h3 {
       font-family: var(--font-display);
@@ -1629,7 +1656,7 @@
   <main id="main-content">
     <section class="hero" aria-label="Hero">
       <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1920&q=80" alt="Interior of a dark arcade bar with neon lights and pinball machines" loading="eager">
+        <img src="assets/hero-bg.png" alt="Interior of Neon Quarter arcade bar with neon lights, pinball machines and cocktails" loading="eager">
       </div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -1704,32 +1731,32 @@
         <p class="section-subtitle">Everything you need for an unforgettable night out.</p>
         <div class="features-grid">
           <article class="feature-card animate-in">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <svg class="feature-icon magenta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
             <h3>Play Classic Arcades</h3>
             <p>Play iconic machines from the 80s, 90s and modern arcade favourites.</p>
           </article>
           <article class="feature-card animate-in">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <svg class="feature-icon violet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
             <h3>Pinball Battles</h3>
             <p>Challenge friends across legendary and modern pinball machines.</p>
           </article>
           <article class="feature-card animate-in">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>
+            <svg class="feature-icon orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>
             <h3>Craft Cocktails</h3>
             <p>Discover signature cocktails, local beers and alcohol-free options.</p>
           </article>
           <article class="feature-card animate-in">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <svg class="feature-icon magenta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
             <h3>Group Events</h3>
             <p>Bring your team, friends or community together for a private event.</p>
           </article>
           <article class="feature-card animate-in">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <svg class="feature-icon violet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
             <h3>Date Night</h3>
             <p>Games, drinks and friendly competition for a different night out.</p>
           </article>
           <article class="feature-card animate-in">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <svg class="feature-icon orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
             <h3>Tournaments</h3>
             <p>Join weekly competitions, climb the leaderboard and win prizes.</p>
           </article>
