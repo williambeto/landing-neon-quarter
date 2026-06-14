@@ -1351,6 +1351,19 @@
       color: var(--color-cyan);
       outline: none;
     }
+    .footer-signature {
+      font-size: 0.75rem;
+      color: var(--color-text-dim);
+      text-align: center;
+    }
+    .footer-signature a {
+      color: var(--color-cyan);
+      transition: color var(--transition);
+    }
+    .footer-signature a:hover, .footer-signature a:focus {
+      color: var(--color-magenta);
+      outline: none;
+    }
 
     @media (min-width: 768px) {
       .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
@@ -2224,6 +2237,7 @@
           <a href="#">Terms of Service</a>
         </div>
       </div>
+      <p class="footer-signature">Made with <a href="https://ai-workflow-kit-site.pages.dev/" target="_blank" rel="noopener noreferrer">AI Workflow</a></p>
     </div>
   </footer>
 
