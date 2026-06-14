@@ -1,0 +1,2527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Quarter | Arcade, Pinball & Cocktails</title>
+  <meta name="description" content="Play classic arcade games, legendary pinball machines and enjoy craft cocktails, weekly tournaments and private events at Neon Quarter.">
+  <meta property="og:title" content="Neon Quarter | Arcade, Pinball & Cocktails">
+  <meta property="og:description" content="Play classic arcade games, legendary pinball machines and enjoy craft cocktails, weekly tournaments and private events at Neon Quarter.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://neonquarter.com">
+  <meta property="og:image" content="https://neonquarter.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Neon Quarter | Arcade, Pinball & Cocktails">
+  <meta name="twitter:description" content="Play classic arcade games, legendary pinball machines and enjoy craft cocktails, weekly tournaments and private events at Neon Quarter.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕹️%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarOrPub",
+    "name": "Neon Quarter",
+    "description": "Arcade bar featuring classic arcade games, pinball machines, craft cocktails and weekly tournaments.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Arcade Alley",
+      "addressLocality": "Downtown Austin",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-512-555-0123",
+    "email": "hello@neonquarter.com",
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"], "opens": "16:00", "closes": "00:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "12:00", "closes": "02:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "23:00"}
+    ],
+    "url": "https://neonquarter.com",
+    "sameAs": [
+      "https://instagram.com/neonquarter",
+      "https://facebook.com/neonquarter",
+      "https://twitter.com/neonquarter"
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --color-bg: #0a0a0f;
+      --color-bg-elevated: #12121a;
+      --color-bg-card: #161622;
+      --color-charcoal: #1a1a2e;
+      --color-magenta: #ff00ff;
+      --color-cyan: #00ffff;
+      --color-blue: #3b82f6;
+      --color-violet: #8b5cf6;
+      --color-orange: #ff6b35;
+      --color-text: #f1f5f9;
+      --color-text-muted: #94a3b8;
+      --color-text-dim: #64748b;
+      --color-border: rgba(255, 255, 255, 0.08);
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --shadow-glow-magenta: 0 0 20px rgba(255, 0, 255, 0.3), 0 0 40px rgba(255, 0, 255, 0.1);
+      --shadow-glow-cyan: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 40px rgba(0, 255, 255, 0.1);
+      --shadow-glow-violet: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-sm: 8px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle grid texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image:
+        linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--color-magenta);
+      color: var(--color-bg);
+      padding: 8px 16px;
+      z-index: 10000;
+      font-weight: 600;
+      border-radius: 0 0 var(--radius-sm) 0;
+      transition: top 0.3s;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: background-color var(--transition), box-shadow var(--transition);
+      padding: 16px 0;
+    }
+    .header.scrolled {
+      background-color: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .logo span {
+      color: var(--color-magenta);
+      text-shadow: var(--shadow-glow-magenta);
+    }
+    .nav-desktop {
+      display: none;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-desktop a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      transition: color var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-desktop a:hover, .nav-desktop a:focus {
+      color: var(--color-cyan);
+      outline: none;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-magenta), var(--color-violet));
+      color: white;
+      border: none;
+      box-shadow: var(--shadow-glow-magenta);
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.5), 0 0 60px rgba(255, 0, 255, 0.2);
+      outline: none;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-cyan);
+      border: 2px solid var(--color-cyan);
+      box-shadow: var(--shadow-glow-cyan);
+    }
+    .btn-secondary:hover, .btn-secondary:focus {
+      background: rgba(0, 255, 255, 0.1);
+      transform: translateY(-2px);
+      outline: none;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-text-muted);
+      border: 2px solid var(--color-border);
+    }
+    .btn-ghost:hover, .btn-ghost:focus {
+      border-color: var(--color-violet);
+      color: var(--color-violet);
+      outline: none;
+    }
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-text);
+      transition: all var(--transition);
+    }
+    .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    .nav-mobile {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(10, 10, 15, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      transform: translateX(100%);
+      transition: transform var(--transition);
+    }
+    .nav-mobile.open {
+      transform: translateX(0);
+    }
+    .nav-mobile a {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--color-text);
+      transition: color var(--transition);
+    }
+    .nav-mobile a:hover, .nav-mobile a:focus {
+      color: var(--color-cyan);
+      outline: none;
+    }
+    .nav-mobile .btn-primary {
+      font-size: 1rem;
+      padding: 16px 32px;
+    }
+    .menu-toggle-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-text);
+      font-size: 2rem;
+      line-height: 1;
+    }
+    .menu-toggle-close:hover, .menu-toggle-close:focus {
+      color: var(--color-magenta);
+      outline: none;
+    }
+
+    @media (min-width: 1024px) {
+      .nav-desktop { display: flex; }
+      .menu-toggle { display: none; }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(10, 10, 15, 0.95) 0%, rgba(10, 10, 15, 0.8) 50%, rgba(10, 10, 15, 0.4) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 120px 24px 60px;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--color-cyan);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: var(--color-cyan);
+      box-shadow: var(--shadow-glow-cyan);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      max-width: 700px;
+    }
+    .hero-title .magenta { color: var(--color-magenta); text-shadow: var(--shadow-glow-magenta); }
+    .hero-title .cyan { color: var(--color-cyan); text-shadow: var(--shadow-glow-cyan); }
+    .hero-title .white { color: white; }
+    .hero-text {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+      max-width: 500px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .hero-stat-number {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-cyan);
+      text-shadow: var(--shadow-glow-cyan);
+    }
+    .hero-stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--color-text-dim);
+    }
+
+    @media (min-width: 768px) {
+      .hero-content { padding: 140px 48px 80px; }
+      .hero-stats { gap: 48px; }
+      .hero-stat-number { font-size: 2rem; }
+    }
+
+    /* Section base */
+    .section {
+      padding: 80px 24px;
+      position: relative;
+    }
+    .section-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Promotions */
+    .promos-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .promo-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+    .promo-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-magenta), var(--color-cyan), var(--color-violet));
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .promo-card:hover, .promo-card:focus-within {
+      border-color: rgba(255, 0, 255, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--shadow-glow-magenta);
+    }
+    .promo-card:hover::before, .promo-card:focus-within::before {
+      opacity: 1;
+    }
+    .promo-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--color-cyan);
+    }
+    .promo-card .promo-tagline {
+      font-size: 1rem;
+      color: var(--color-text);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .promo-card ul {
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .promo-card li {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .promo-card li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-magenta);
+      box-shadow: 0 0 8px var(--color-magenta);
+      flex-shrink: 0;
+    }
+    .promo-card .btn {
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .promos-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .promos-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* What You Can Do */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-cyan), var(--color-violet));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .feature-card:hover, .feature-card:focus-within {
+      border-color: rgba(0, 255, 255, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    .feature-card:hover::after, .feature-card:focus-within::after {
+      transform: scaleX(1);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 20px;
+      color: var(--color-cyan);
+      filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));
+    }
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--color-text);
+    }
+    .feature-card p {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    @media (min-width: 640px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Explore */
+    .explore-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .explore-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+      transition: all var(--transition);
+    }
+    .explore-card:hover, .explore-card:focus {
+      border-color: var(--color-cyan);
+      box-shadow: var(--shadow-glow-cyan);
+      outline: none;
+    }
+    .explore-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .explore-card:hover img, .explore-card:focus img {
+      transform: scale(1.08);
+    }
+    .explore-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 15, 0.95) 0%, rgba(10, 10, 15, 0.3) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      transition: background var(--transition);
+    }
+    .explore-card:hover .explore-card-overlay {
+      background: linear-gradient(to top, rgba(10, 10, 15, 0.98) 0%, rgba(10, 10, 15, 0.5) 60%, transparent 100%);
+    }
+    .explore-card-icon {
+      width: 32px;
+      height: 32px;
+      color: var(--color-cyan);
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.5));
+    }
+    .explore-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: var(--color-text);
+    }
+    .explore-card p {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    .explore-card-arrow {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      background: rgba(0, 255, 255, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-cyan);
+      transition: all var(--transition);
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    .explore-card:hover .explore-card-arrow, .explore-card:focus .explore-card-arrow {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 640px) {
+      .explore-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .explore-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Menu */
+    .menu-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .menu-tab {
+      padding: 10px 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-text-muted);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .menu-tab:hover, .menu-tab:focus {
+      color: var(--color-cyan);
+      border-color: var(--color-cyan);
+      outline: none;
+    }
+    .menu-tab.active {
+      background: linear-gradient(135deg, var(--color-magenta), var(--color-violet));
+      color: white;
+      border-color: transparent;
+      box-shadow: var(--shadow-glow-magenta);
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      transition: all var(--transition);
+    }
+    .menu-item:hover, .menu-item:focus-within {
+      border-color: rgba(0, 255, 255, 0.2);
+      transform: translateX(4px);
+    }
+    .menu-item-info h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .menu-item-info p {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    .menu-item-tags {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+    .menu-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--color-violet);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+    .menu-tag.veg {
+      background: rgba(34, 197, 94, 0.15);
+      color: #22c55e;
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+    .menu-tag.nonalcoholic {
+      background: rgba(0, 255, 255, 0.15);
+      color: var(--color-cyan);
+      border-color: rgba(0, 255, 255, 0.3);
+    }
+    .menu-item-price {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-cyan);
+      text-shadow: var(--shadow-glow-cyan);
+      white-space: nowrap;
+    }
+    .menu-panel {
+      display: none;
+    }
+    .menu-panel.active {
+      display: grid;
+    }
+
+    @media (min-width: 768px) {
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Events */
+    .events-filter {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-text-muted);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .filter-btn:hover, .filter-btn:focus {
+      color: var(--color-cyan);
+      border-color: var(--color-cyan);
+      outline: none;
+    }
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--color-cyan), var(--color-blue));
+      color: var(--color-bg);
+      border-color: transparent;
+      box-shadow: var(--shadow-glow-cyan);
+    }
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .event-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .event-card:hover, .event-card:focus-within {
+      border-color: rgba(0, 255, 255, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    .event-card-header {
+      padding: 20px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .event-date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      min-width: 60px;
+    }
+    .event-date-day {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-magenta);
+      line-height: 1;
+    }
+    .event-date-month {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+    .event-category {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(255, 0, 255, 0.15);
+      color: var(--color-magenta);
+      border: 1px solid rgba(255, 0, 255, 0.3);
+    }
+    .event-card-body {
+      padding: 16px 24px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .event-card-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--color-text);
+    }
+    .event-time {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .event-card-body p {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .event-card-body .btn {
+      align-self: flex-start;
+    }
+
+    @media (min-width: 768px) {
+      .events-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Social Proof */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .stat-box {
+      text-align: center;
+      padding: 24px;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      transition: all var(--transition);
+    }
+    .stat-box:hover {
+      border-color: rgba(0, 255, 255, 0.2);
+      transform: translateY(-4px);
+    }
+    .stat-box-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--color-cyan);
+      text-shadow: var(--shadow-glow-cyan);
+      margin-bottom: 4px;
+    }
+    .stat-box-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--color-text-muted);
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .review-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all var(--transition);
+    }
+    .review-card:hover {
+      border-color: rgba(255, 0, 255, 0.2);
+      transform: translateY(-4px);
+    }
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .review-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-magenta), var(--color-violet));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: white;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .review-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .review-name {
+      font-weight: 600;
+      color: var(--color-text);
+      font-size: 0.95rem;
+    }
+    .review-stars {
+      color: var(--color-orange);
+      font-size: 0.875rem;
+      letter-spacing: 2px;
+    }
+    .review-card p {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    @media (min-width: 768px) {
+      .stats-row { grid-template-columns: repeat(4, 1fr); }
+      .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+      transition: all var(--transition);
+      aspect-ratio: 4/3;
+    }
+    .gallery-item:hover, .gallery-item:focus {
+      border-color: var(--color-cyan);
+      box-shadow: var(--shadow-glow-cyan);
+      outline: none;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img, .gallery-item:focus img {
+      transform: scale(1.05);
+    }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 15, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .gallery-item:hover .gallery-overlay, .gallery-item:focus .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-overlay svg {
+      width: 40px;
+      height: 40px;
+      color: var(--color-cyan);
+      filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+      }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+      .gallery-item:nth-child(4) { grid-row: span 2; aspect-ratio: auto; }
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition);
+    }
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      box-shadow: 0 0 60px rgba(0, 255, 255, 0.2);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text);
+      font-size: 1.5rem;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+    .lightbox-close:hover, .lightbox-close:focus {
+      border-color: var(--color-magenta);
+      color: var(--color-magenta);
+      outline: none;
+    }
+
+    /* Visit */
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .visit-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: var(--color-cyan);
+    }
+    .visit-info p, .visit-info address {
+      font-style: normal;
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .visit-hours {
+      margin-bottom: 24px;
+    }
+    .visit-hours li {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .visit-hours li span:first-child {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+    .visit-map {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--color-text-muted);
+      overflow: hidden;
+      position: relative;
+    }
+    .visit-map::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
+    }
+    .visit-map svg {
+      width: 48px;
+      height: 48px;
+      color: var(--color-magenta);
+      filter: drop-shadow(0 0 12px rgba(255, 0, 255, 0.4));
+      position: relative;
+      z-index: 1;
+    }
+    .visit-map span {
+      position: relative;
+      z-index: 1;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .visit-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .visit-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--color-bg-elevated);
+      border-top: 1px solid var(--color-border);
+      padding: 64px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo {
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .footer-brand p {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 300px;
+    }
+    .footer-nav h4 {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      color: var(--color-text);
+    }
+    .footer-nav ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-nav a {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      transition: color var(--transition);
+    }
+    .footer-nav a:hover, .footer-nav a:focus {
+      color: var(--color-cyan);
+      outline: none;
+    }
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-muted);
+      transition: all var(--transition);
+    }
+    .footer-social a:hover, .footer-social a:focus {
+      border-color: var(--color-magenta);
+      color: var(--color-magenta);
+      box-shadow: var(--shadow-glow-magenta);
+      outline: none;
+    }
+    .footer-social a svg {
+      width: 18px;
+      height: 18px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .newsletter-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 12px 16px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text);
+      font-size: 0.875rem;
+      transition: border-color var(--transition);
+    }
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--color-cyan);
+      box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+    }
+    .newsletter-form input::placeholder {
+      color: var(--color-text-dim);
+    }
+    .newsletter-form .btn {
+      padding: 12px 20px;
+    }
+    .footer-bottom {
+      border-top: 1px solid var(--color-border);
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: var(--color-text-dim);
+    }
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-bottom-links a {
+      font-size: 0.8rem;
+      color: var(--color-text-dim);
+      transition: color var(--transition);
+    }
+    .footer-bottom-links a:hover, .footer-bottom-links a:focus {
+      color: var(--color-cyan);
+      outline: none;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; }
+      .footer-bottom { flex-direction: row; justify-content: space-between; }
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 15, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition);
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 560px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+      transform: scale(0.95);
+      transition: transform var(--transition);
+    }
+    .modal-overlay.active .modal {
+      transform: scale(1);
+    }
+    .modal-header {
+      padding: 24px 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text);
+    }
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-muted);
+      font-size: 1.25rem;
+      transition: all var(--transition);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .modal-close:hover, .modal-close:focus {
+      border-color: var(--color-magenta);
+      color: var(--color-magenta);
+      outline: none;
+    }
+    .modal-body {
+      padding: 24px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-text-muted);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text);
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: all var(--transition);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--color-cyan);
+      box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-error {
+      font-size: 0.75rem;
+      color: var(--color-orange);
+      margin-top: 4px;
+      display: none;
+    }
+    .form-group.has-error input,
+    .form-group.has-error select,
+    .form-group.has-error textarea {
+      border-color: var(--color-orange);
+    }
+    .form-group.has-error .form-error {
+      display: block;
+    }
+    .form-success {
+      text-align: center;
+      padding: 40px 24px;
+      display: none;
+    }
+    .form-success.active {
+      display: block;
+    }
+    .form-success svg {
+      width: 64px;
+      height: 64px;
+      color: var(--color-cyan);
+      margin: 0 auto 16px;
+      filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.4));
+    }
+    .form-success h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--color-text);
+    }
+    .form-success p {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+    .modal-form {
+      display: block;
+    }
+    .modal-form.hidden {
+      display: none;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animate-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+      .animate-in {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Focus visible */
+    :focus-visible {
+      outline: 2px solid var(--color-cyan);
+      outline-offset: 2px;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--color-bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-charcoal);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-violet);
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo" aria-label="Neon Quarter home">Neon <span>Quarter</span></a>
+      <nav class="nav-desktop" aria-label="Main navigation">
+        <a href="#games">Games</a>
+        <a href="#events">Events</a>
+        <a href="#menu">Menu</a>
+        <a href="#parties">Parties</a>
+        <a href="#visit">Visit</a>
+        <button class="btn btn-primary" onclick="openModal()">Book a Night</button>
+      </nav>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMenu()" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+    <button class="menu-toggle-close" aria-label="Close menu" onclick="toggleMenu()">&times;</button>
+    <a href="#games" onclick="toggleMenu()">Games</a>
+    <a href="#events" onclick="toggleMenu()">Events</a>
+    <a href="#menu" onclick="toggleMenu()">Menu</a>
+    <a href="#parties" onclick="toggleMenu()">Parties</a>
+    <a href="#visit" onclick="toggleMenu()">Visit</a>
+    <button class="btn btn-primary" onclick="toggleMenu(); openModal()">Book a Night</button>
+  </nav>
+
+  <main id="main-content">
+    <section class="hero" aria-label="Hero">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1920&q=80" alt="Interior of a dark arcade bar with neon lights and pinball machines" loading="eager">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Arcade bar • Pinball • Cocktails</p>
+        <h1 class="hero-title">
+          <span class="magenta">Arcade.</span> <span class="cyan">Pinball.</span> <span class="white">Cocktails.</span> <span class="magenta">High Scores.</span>
+        </h1>
+        <p class="hero-text">Retro games, legendary pinball machines and craft drinks in one electric night out.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="openModal()">Book a Night</button>
+          <a href="#games" class="btn btn-secondary">See the Games</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-number">80+</span>
+            <span class="hero-stat-label">Games</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">20+</span>
+            <span class="hero-stat-label">Signature Cocktails</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">Weekly</span>
+            <span class="hero-stat-label">Events</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="parties" aria-labelledby="promos-title">
+      <div class="section-inner">
+        <h2 class="section-title" id="promos-title">Special Offers</h2>
+        <p class="section-subtitle">Level up your night with our exclusive deals and events.</p>
+        <div class="promos-grid">
+          <article class="promo-card animate-in">
+            <h3>Happy Hour Power Play</h3>
+            <p class="promo-tagline">Drinks down. Game on.</p>
+            <ul>
+              <li>Select drinks from $4</li>
+              <li>Bonus arcade credits</li>
+              <li>Weekdays from 4 PM to 7 PM</li>
+            </ul>
+            <button class="btn btn-secondary" onclick="openModal()">Level Up</button>
+          </article>
+          <article class="promo-card animate-in">
+            <h3>Pinball League Nights</h3>
+            <p class="promo-tagline">Compete. Climb. Become legendary.</p>
+            <ul>
+              <li>Weekly league play</li>
+              <li>Live leaderboard</li>
+              <li>Prizes for top players</li>
+            </ul>
+            <button class="btn btn-secondary" onclick="openModal()">Join the League</button>
+          </article>
+          <article class="promo-card animate-in">
+            <h3>Birthday & Private Parties</h3>
+            <p class="promo-tagline">Your party. Levelled up.</p>
+            <ul>
+              <li>Group bookings</li>
+              <li>Private space</li>
+              <li>Custom food, drinks and game packages</li>
+            </ul>
+            <button class="btn btn-secondary" onclick="openModal()">Plan Your Party</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="games" aria-labelledby="features-title">
+      <div class="section-inner">
+        <h2 class="section-title" id="features-title">What You Can Do Here</h2>
+        <p class="section-subtitle">Everything you need for an unforgettable night out.</p>
+        <div class="features-grid">
+          <article class="feature-card animate-in">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <h3>Play Classic Arcades</h3>
+            <p>Play iconic machines from the 80s, 90s and modern arcade favourites.</p>
+          </article>
+          <article class="feature-card animate-in">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <h3>Pinball Battles</h3>
+            <p>Challenge friends across legendary and modern pinball machines.</p>
+          </article>
+          <article class="feature-card animate-in">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>
+            <h3>Craft Cocktails</h3>
+            <p>Discover signature cocktails, local beers and alcohol-free options.</p>
+          </article>
+          <article class="feature-card animate-in">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <h3>Group Events</h3>
+            <p>Bring your team, friends or community together for a private event.</p>
+          </article>
+          <article class="feature-card animate-in">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <h3>Date Night</h3>
+            <p>Games, drinks and friendly competition for a different night out.</p>
+          </article>
+          <article class="feature-card animate-in">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <h3>Tournaments</h3>
+            <p>Join weekly competitions, climb the leaderboard and win prizes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="explore-title">
+      <div class="section-inner">
+        <h2 class="section-title" id="explore-title">Explore Neon Quarter</h2>
+        <p class="section-subtitle">Six zones. One unforgettable experience.</p>
+        <div class="explore-grid">
+          <article class="explore-card animate-in" tabindex="0" aria-label="Explore Classic Arcade Zone">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80" alt="Classic arcade machines with neon lights" loading="lazy">
+            <div class="explore-card-overlay">
+              <svg class="explore-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              <h3>Classic Arcade Zone</h3>
+              <p>From 80s legends to modern favourites. Insert coin and play.</p>
+            </div>
+            <div class="explore-card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </article>
+          <article class="explore-card animate-in" tabindex="0" aria-label="Explore Pinball Row">
+            <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=800&q=80" alt="Pinball machine with bright lights" loading="lazy">
+            <div class="explore-card-overlay">
+              <svg class="explore-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <h3>Pinball Row</h3>
+              <p>Premium machines, flashing lights and real competition.</p>
+            </div>
+            <div class="explore-card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </article>
+          <article class="explore-card animate-in" tabindex="0" aria-label="Explore Rhythm and Racing">
+            <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=800&q=80" alt="Racing arcade game with steering wheel" loading="lazy">
+            <div class="explore-card-overlay">
+              <svg class="explore-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <h3>Rhythm & Racing</h3>
+              <p>Race, dance and test your timing in high-energy challenges.</p>
+            </div>
+            <div class="explore-card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </article>
+          <article class="explore-card animate-in" tabindex="0" aria-label="Explore Multiplayer Challenges">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80" alt="Group of friends playing multiplayer arcade games" loading="lazy">
+            <div class="explore-card-overlay">
+              <svg class="explore-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              <h3>Multiplayer Challenges</h3>
+              <p>Bring your crew and compete head-to-head.</p>
+            </div>
+            <div class="explore-card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </article>
+          <article class="explore-card animate-in" tabindex="0" aria-label="Explore Food and Drinks">
+            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80" alt="Craft cocktails on a bar counter" loading="lazy">
+            <div class="explore-card-overlay">
+              <svg class="explore-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>
+              <h3>Food & Drinks</h3>
+              <p>Shareable food, local beers and next-level cocktails.</p>
+            </div>
+            <div class="explore-card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </article>
+          <article class="explore-card animate-in" tabindex="0" aria-label="Explore Tournaments">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80" alt="Tournament leaderboard and competition setup" loading="lazy">
+            <div class="explore-card-overlay">
+              <svg class="explore-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <h3>Tournaments</h3>
+              <p>Weekly events, live rankings and prizes worth chasing.</p>
+            </div>
+            <div class="explore-card-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu" aria-labelledby="menu-title">
+      <div class="section-inner">
+        <h2 class="section-title" id="menu-title">Menu Preview</h2>
+        <p class="section-subtitle">Craft drinks, local beers and shareable bites.</p>
+        <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+          <button class="menu-tab active" role="tab" aria-selected="true" aria-controls="panel-cocktails" onclick="switchTab('cocktails')">Cocktails</button>
+          <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-beer" onclick="switchTab('beer')">Beer</button>
+          <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-food" onclick="switchTab('food')">Food</button>
+          <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-alcoholfree" onclick="switchTab('alcoholfree')">Alcohol-Free</button>
+        </div>
+        <div id="panel-cocktails" class="menu-panel active" role="tabpanel">
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Pixel Punch</h4>
+                <p>Rum, pineapple, lime, passion fruit and a neon glow</p>
+              </div>
+              <span class="menu-item-price">$12</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>High Score Mule</h4>
+                <p>Vodka, ginger beer, lime and a cyan twist</p>
+              </div>
+              <span class="menu-item-price">$11</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Neon Sunset</h4>
+                <p>Tequila, orange, grenadine and a magenta rim</p>
+              </div>
+              <span class="menu-item-price">$13</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Final Boss Old Fashioned</h4>
+                <p>Bourbon, bitters, orange zest and smoked sugar</p>
+              </div>
+              <span class="menu-item-price">$14</span>
+            </div>
+          </div>
+        </div>
+        <div id="panel-beer" class="menu-panel" role="tabpanel">
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>High Score IPA</h4>
+                <p>Local craft, citrus notes, 6.5% ABV</p>
+              </div>
+              <span class="menu-item-price">$8</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Arcade Lager</h4>
+                <p>Crisp, refreshing, perfect for long sessions</p>
+              </div>
+              <span class="menu-item-price">$7</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Pinball Porter</h4>
+                <p>Dark, rich, chocolate and coffee notes</p>
+              </div>
+              <span class="menu-item-price">$9</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Neon Sour</h4>
+                <p>Tart, fruity, brewed with real berries</p>
+              </div>
+              <span class="menu-item-price">$9</span>
+            </div>
+          </div>
+        </div>
+        <div id="panel-food" class="menu-panel" role="tabpanel">
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Loaded Arcade Fries</h4>
+                <p>Cheese, bacon, jalapeños and secret sauce</p>
+                <div class="menu-item-tags"><span class="menu-tag">V</span></div>
+              </div>
+              <span class="menu-item-price">$10</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Smash Burger</h4>
+                <p>Double patty, american cheese, pickles, special sauce</p>
+              </div>
+              <span class="menu-item-price">$14</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Power-Up Nachos</h4>
+                <p>Loaded with toppings, guacamole and salsa</p>
+                <div class="menu-item-tags"><span class="menu-tag veg">V</span></div>
+              </div>
+              <span class="menu-item-price">$12</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>1UP Chicken Wings</h4>
+                <p>Spicy glaze, ranch dip, celery sticks</p>
+              </div>
+              <span class="menu-item-price">$13</span>
+            </div>
+          </div>
+        </div>
+        <div id="panel-alcoholfree" class="menu-panel" role="tabpanel">
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Player Two Mocktail</h4>
+                <p>Mango, lime, soda and a mint finish</p>
+                <div class="menu-item-tags"><span class="menu-tag nonalcoholic">NA</span></div>
+              </div>
+              <span class="menu-item-price">$8</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Reset Button</h4>
+                <p>Cucumber, elderflower, tonic and lime</p>
+                <div class="menu-item-tags"><span class="menu-tag nonalcoholic">NA</span></div>
+              </div>
+              <span class="menu-item-price">$8</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Zero-G Soda</h4>
+                <p>House-made cola with vanilla and cherry</p>
+                <div class="menu-item-tags"><span class="menu-tag nonalcoholic">NA</span></div>
+              </div>
+              <span class="menu-item-price">$5</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-item-info">
+                <h4>Continue Lemonade</h4>
+                <p>Fresh lemon, lavender syrup, sparkling water</p>
+                <div class="menu-item-tags"><span class="menu-tag nonalcoholic">NA</span></div>
+              </div>
+              <span class="menu-item-price">$7</span>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 32px;">
+          <button class="btn btn-ghost" onclick="alert('Full menu coming soon!')">View Full Menu</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="events" aria-labelledby="events-title">
+      <div class="section-inner">
+        <h2 class="section-title" id="events-title">Upcoming Events</h2>
+        <p class="section-subtitle">Mark your calendar. Something is always happening.</p>
+        <div class="events-filter" role="group" aria-label="Filter events by category">
+          <button class="filter-btn active" onclick="filterEvents('all')">All</button>
+          <button class="filter-btn" onclick="filterEvents('arcade')">Arcade</button>
+          <button class="filter-btn" onclick="filterEvents('pinball')">Pinball</button>
+          <button class="filter-btn" onclick="filterEvents('parties')">Parties</button>
+        </div>
+        <div class="events-grid" id="eventsGrid">
+          <article class="event-card animate-in" data-category="arcade">
+            <div class="event-card-header">
+              <div class="event-date">
+                <span class="event-date-day">21</span>
+                <span class="event-date-month">Jun</span>
+              </div>
+              <span class="event-category">Arcade</span>
+            </div>
+            <div class="event-card-body">
+              <h3>Friday High Score Challenge</h3>
+              <p class="event-time">7:00 PM - 11:00 PM</p>
+              <p>Compete for the highest score on classic arcade machines. Prizes for the top three players every week.</p>
+              <button class="btn btn-secondary" onclick="openModal()">Join Event</button>
+            </div>
+          </article>
+          <article class="event-card animate-in" data-category="pinball">
+            <div class="event-card-header">
+              <div class="event-date">
+                <span class="event-date-day">23</span>
+                <span class="event-date-month">Jun</span>
+              </div>
+              <span class="event-category">Pinball</span>
+            </div>
+            <div class="event-card-body">
+              <h3>Wednesday Pinball League</h3>
+              <p class="event-time">6:00 PM - 10:00 PM</p>
+              <p>Weekly league night with live leaderboard tracking. All skill levels welcome. Monthly prizes for league leaders.</p>
+              <button class="btn btn-secondary" onclick="openModal()">Join Event</button>
+            </div>
+          </article>
+          <article class="event-card animate-in" data-category="arcade">
+            <div class="event-card-header">
+              <div class="event-date">
+                <span class="event-date-day">28</span>
+                <span class="event-date-month">Jun</span>
+              </div>
+              <span class="event-category">Arcade</span>
+            </div>
+            <div class="event-card-body">
+              <h3>Retro Tournament Night</h3>
+              <p class="event-time">6:00 PM - 12:00 AM</p>
+              <p>Monthly tournament featuring rotating retro games. Entry fee includes drink token and tournament credits.</p>
+              <button class="btn btn-secondary" onclick="openModal()">Join Event</button>
+            </div>
+          </article>
+          <article class="event-card animate-in" data-category="parties">
+            <div class="event-card-header">
+              <div class="event-date">
+                <span class="event-date-day">29</span>
+                <span class="event-date-month">Jun</span>
+              </div>
+              <span class="event-category">Parties</span>
+            </div>
+            <div class="event-card-body">
+              <h3>Sunday Family Session</h3>
+              <p class="event-time">12:00 PM - 5:00 PM</p>
+              <p>All-ages afternoon with family-friendly games, food specials and a relaxed atmosphere. Kids welcome.</p>
+              <button class="btn btn-secondary" onclick="openModal()">Join Event</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="social-title">
+      <div class="section-inner">
+        <h2 class="section-title" id="social-title">The Numbers</h2>
+        <p class="section-subtitle">Join thousands of players who have made Neon Quarter their spot.</p>
+        <div class="stats-row">
+          <div class="stat-box animate-in">
+            <div class="stat-box-number">80+</div>
+            <div class="stat-box-label">Games</div>
+          </div>
+          <div class="stat-box animate-in">
+            <div class="stat-box-number">20+</div>
+            <div class="stat-box-label">Signature Cocktails</div>
+          </div>
+          <div class="stat-box animate-in">
+            <div class="stat-box-number">Weekly</div>
+            <div class="stat-box-label">Tournaments</div>
+          </div>
+          <div class="stat-box animate-in">
+            <div class="stat-box-number">10K+</div>
+            <div class="stat-box-label">Happy Players</div>
+          </div>
+        </div>
+        <h2 class="section-title" style="margin-top: 64px;">What Players Say</h2>
+        <div class="reviews-grid">
+          <article class="review-card animate-in">
+            <div class="review-header">
+              <div class="review-avatar">JM</div>
+              <div class="review-meta">
+                <span class="review-name">James M.</span>
+                <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              </div>
+            </div>
+            <p>The best arcade bar in the city. Great machines, drinks and atmosphere.</p>
+          </article>
+          <article class="review-card animate-in">
+            <div class="review-header">
+              <div class="review-avatar">SR</div>
+              <div class="review-meta">
+                <span class="review-name">Sarah R.</span>
+                <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              </div>
+            </div>
+            <p>The pinball selection is unreal and the staff are excellent.</p>
+          </article>
+          <article class="review-card animate-in">
+            <div class="review-header">
+              <div class="review-avatar">DK</div>
+              <div class="review-meta">
+                <span class="review-name">David K.</span>
+                <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              </div>
+            </div>
+            <p>Perfect place for birthdays, date nights and group events.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="gallery-title">
+      <div class="section-inner">
+        <h2 class="section-title" id="gallery-title">Gallery</h2>
+        <p class="section-subtitle">A glimpse inside the neon-soaked world of Neon Quarter.</p>
+        <div class="gallery-grid">
+          <div class="gallery-item animate-in" tabindex="0" aria-label="View larger image of arcade machines" onclick="openLightbox(0)">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&q=80" alt="Classic arcade machines with neon lighting in a dark room" loading="lazy">
+            <div class="gallery-overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </div>
+          </div>
+          <div class="gallery-item animate-in" tabindex="0" aria-label="View larger image of pinball machine" onclick="openLightbox(1)">
+            <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=800&q=80" alt="Close-up of a pinball machine with bright lights and bumpers" loading="lazy">
+            <div class="gallery-overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </div>
+          </div>
+          <div class="gallery-item animate-in" tabindex="0" aria-label="View larger image of cocktails" onclick="openLightbox(2)">
+            <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80" alt="Colorful craft cocktails on a bar counter" loading="lazy">
+            <div class="gallery-overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </div>
+          </div>
+          <div class="gallery-item animate-in" tabindex="0" aria-label="View larger image of people playing" onclick="openLightbox(3)">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80" alt="Friends playing arcade games together" loading="lazy">
+            <div class="gallery-overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </div>
+          </div>
+          <div class="gallery-item animate-in" tabindex="0" aria-label="View larger image of event night" onclick="openLightbox(4)">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80" alt="Tournament night with leaderboard and players" loading="lazy">
+            <div class="gallery-overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </div>
+          </div>
+          <div class="gallery-item animate-in" tabindex="0" aria-label="View larger image of bar interior" onclick="openLightbox(5)">
+            <img src="https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=800&q=80" alt="Interior of Neon Quarter bar with neon lights and seating" loading="lazy">
+            <div class="gallery-overlay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visit" aria-labelledby="visit-title">
+      <div class="section-inner">
+        <h2 class="section-title" id="visit-title">Visit Neon Quarter</h2>
+        <p class="section-subtitle">Find us in the heart of downtown. Open late, always electric.</p>
+        <div class="visit-grid">
+          <div class="visit-info">
+            <div>
+              <h3>Address</h3>
+              <address>123 Arcade Alley<br>Downtown Austin<br>TX 78701</address>
+            </div>
+            <div>
+              <h3>Opening Hours</h3>
+              <ul class="visit-hours">
+                <li><span>Monday – Thursday</span><span>4 PM – 12 AM</span></li>
+                <li><span>Friday – Saturday</span><span>12 PM – 2 AM</span></li>
+                <li><span>Sunday</span><span>12 PM – 11 PM</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Contact</h3>
+              <p><a href="tel:+15125550123">+1 (512) 555-0123</a></p>
+              <p><a href="mailto:hello@neonquarter.com">hello@neonquarter.com</a></p>
+            </div>
+            <div>
+              <h3>Info</h3>
+              <p>Wheelchair accessible</p>
+              <p>Street parking & nearby garage</p>
+              <p>18+ after 8 PM. All ages before.</p>
+            </div>
+            <div class="visit-buttons">
+              <button class="btn btn-primary" onclick="openModal()">Book Your Night</button>
+              <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Get Directions</a>
+            </div>
+          </div>
+          <div class="visit-map">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Map loading...</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">Neon <span>Quarter</span></a>
+          <p>Arcade bar featuring classic games, legendary pinball and craft cocktails. Open late, always electric.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#parties">Parties</a></li>
+            <li><a href="#visit">Visit</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-nav" aria-label="Legal navigation">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Accessibility</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h4 style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; color: var(--color-text);">Newsletter</h4>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 12px;">Get event updates, tournament announcements and exclusive offers.</p>
+          <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+            <label for="newsletter-email" class="visually-hidden">Email address</label>
+            <input type="email" id="newsletter-email" placeholder="your@email.com" required aria-required="true">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+          <p id="newsletter-message" style="font-size: 0.8rem; color: var(--color-cyan); margin-top: 8px; display: none;">Thanks for subscribing!</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Neon Quarter. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal" role="document">
+      <div class="modal-header">
+        <h2 id="modal-title">Book a Night</h2>
+        <button class="modal-close" aria-label="Close modal" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form class="modal-form" id="bookingForm" onsubmit="handleBooking(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="booking-name">Name</label>
+              <input type="text" id="booking-name" required aria-required="true">
+              <span class="form-error">Please enter your name</span>
+            </div>
+            <div class="form-group">
+              <label for="booking-email">Email</label>
+              <input type="email" id="booking-email" required aria-required="true">
+              <span class="form-error">Please enter a valid email</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="booking-phone">Phone</label>
+              <input type="tel" id="booking-phone" required aria-required="true">
+              <span class="form-error">Please enter your phone number</span>
+            </div>
+            <div class="form-group">
+              <label for="booking-type">Type</label>
+              <select id="booking-type" required aria-required="true">
+                <option value="">Select type</option>
+                <option value="general">General Visit</option>
+                <option value="birthday">Birthday Party</option>
+                <option value="private">Private Event</option>
+                <option value="corporate">Corporate Event</option>
+                <option value="date">Date Night</option>
+              </select>
+              <span class="form-error">Please select a type</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="booking-date">Date</label>
+              <input type="date" id="booking-date" required aria-required="true">
+              <span class="form-error">Please select a date</span>
+            </div>
+            <div class="form-group">
+              <label for="booking-time">Time</label>
+              <input type="time" id="booking-time" required aria-required="true">
+              <span class="form-error">Please select a time</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="booking-guests">Number of People</label>
+            <input type="number" id="booking-guests" min="1" max="50" required aria-required="true">
+            <span class="form-error">Please enter number of guests (1-50)</span>
+          </div>
+          <div class="form-group">
+            <label for="booking-message">Message (optional)</label>
+            <textarea id="booking-message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;" id="bookingSubmit">Submit Request</button>
+        </form>
+        <div class="form-success" id="bookingSuccess">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <h3>Request Received</h3>
+          <p>Your request has been received. Our team will contact you to confirm availability.</p>
+          <button class="btn btn-secondary" style="margin-top: 16px;" onclick="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOnOverlay(event)" role="dialog" aria-modal="true" aria-label="Image gallery" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Close lightbox" onclick="closeLightbox()">&times;</button>
+    <img src="" alt="" id="lightboxImage">
+  </div>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      const nav = document.getElementById('navMobile');
+      const toggle = document.getElementById('menuToggle');
+      const isOpen = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    // Modal
+    const modalOverlay = document.getElementById('modalOverlay');
+    const bookingForm = document.getElementById('bookingForm');
+    const bookingSuccess = document.getElementById('bookingSuccess');
+
+    function openModal() {
+      modalOverlay.classList.add('active');
+      modalOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      // Reset form
+      bookingForm.classList.remove('hidden');
+      bookingSuccess.classList.remove('active');
+      bookingForm.reset();
+      clearErrors();
+      // Focus first input
+      setTimeout(() => document.getElementById('booking-name').focus(), 100);
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      modalOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOnOverlay(event) {
+      if (event.target === modalOverlay) closeModal();
+    }
+
+    // Focus trap for modal
+    modalOverlay.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'Tab') {
+        const focusable = modalOverlay.querySelectorAll('button, input, select, textarea, a[href]');
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    function clearErrors() {
+      document.querySelectorAll('.form-group').forEach(g => g.classList.remove('has-error'));
+    }
+
+    function handleBooking(event) {
+      event.preventDefault();
+      clearErrors();
+      let valid = true;
+
+      const name = document.getElementById('booking-name').value.trim();
+      const email = document.getElementById('booking-email').value.trim();
+      const phone = document.getElementById('booking-phone').value.trim();
+      const type = document.getElementById('booking-type').value;
+      const date = document.getElementById('booking-date').value;
+      const time = document.getElementById('booking-time').value;
+      const guests = document.getElementById('booking-guests').value;
+
+      if (!name) {
+        document.getElementById('booking-name').closest('.form-group').classList.add('has-error');
+        valid = false;
+      }
+      if (!email || !email.includes('@')) {
+        document.getElementById('booking-email').closest('.form-group').classList.add('has-error');
+        valid = false;
+      }
+      if (!phone) {
+        document.getElementById('booking-phone').closest('.form-group').classList.add('has-error');
+        valid = false;
+      }
+      if (!type) {
+        document.getElementById('booking-type').closest('.form-group').classList.add('has-error');
+        valid = false;
+      }
+      if (!date) {
+        document.getElementById('booking-date').closest('.form-group').classList.add('has-error');
+        valid = false;
+      }
+      if (!time) {
+        document.getElementById('booking-time').closest('.form-group').classList.add('has-error');
+        valid = false;
+      }
+      if (!guests || guests < 1 || guests > 50) {
+        document.getElementById('booking-guests').closest('.form-group').classList.add('has-error');
+        valid = false;
+      }
+
+      if (valid) {
+        const submitBtn = document.getElementById('bookingSubmit');
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        setTimeout(() => {
+          bookingForm.classList.add('hidden');
+          bookingSuccess.classList.add('active');
+          submitBtn.textContent = 'Submit Request';
+          submitBtn.disabled = false;
+        }, 1500);
+      }
+    }
+
+    // Menu tabs
+    function switchTab(category) {
+      document.querySelectorAll('.menu-tab').forEach(tab => {
+        tab.classList.remove('active');
+        tab.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.menu-panel').forEach(panel => panel.classList.remove('active'));
+      
+      event.target.classList.add('active');
+      event.target.setAttribute('aria-selected', 'true');
+      document.getElementById('panel-' + category).classList.add('active');
+    }
+
+    // Event filters
+    function filterEvents(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      const cards = document.querySelectorAll('.event-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Lightbox
+    const lightboxImages = [
+      'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200&q=80',
+      'https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?w=1200&q=80',
+      'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1200&q=80',
+      'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80',
+      'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1200&q=80',
+      'https://images.unsplash.com/photo-1551103782-8ab07afd45c1?w=1200&q=80'
+    ];
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+
+    function openLightbox(index) {
+      lightboxImage.src = lightboxImages[index];
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function closeLightboxOnOverlay(event) {
+      if (event.target === lightbox) closeLightbox();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+
+    // Newsletter
+    function handleNewsletter(event) {
+      event.preventDefault();
+      const email = document.getElementById('newsletter-email').value;
+      if (email && email.includes('@')) {
+        document.getElementById('newsletter-message').style.display = 'block';
+        document.getElementById('newsletter-email').value = '';
+        setTimeout(() => {
+          document.getElementById('newsletter-message').style.display = 'none';
+        }, 4000);
+      }
+    }
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
