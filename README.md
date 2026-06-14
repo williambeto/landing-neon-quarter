@@ -142,6 +142,133 @@ ai-workflow deploy --target vercel
 
 ---
 
+## Deploy no Cloudflare Pages (Passo a Passo)
+
+Este projeto está configurado para rodar perfeitamente no **Cloudflare Pages**. Como é um site estático (apenas HTML/CSS/JS), o deploy é direto e gratuito.
+
+### Método 1: Via Dashboard (Mais Simples)
+
+1. **Acesse o Cloudflare Dashboard**
+   - Vá para [dash.cloudflare.com](https://dash.cloudflare.com)
+   - Faça login com sua conta
+
+2. **Criar um novo projeto**
+   - No menu lateral, clique em **Pages**
+   - Clique em **Create a project**
+   - Selecione **Connect to Git**
+
+3. **Conectar o repositório**
+   - Autorize o Cloudflare a acessar sua conta do GitHub
+   - Selecione o repositório: `landing-neon-quarter`
+   - Clique em **Begin setup**
+
+4. **Configurar o build**
+   - **Project name:** `neon-quarter` (ou outro nome de sua preferência)
+   - **Production branch:** `main`
+   - **Framework preset:** `None` (ou `Static HTML`)
+   - **Build command:** Deixe em branco (não precisa compilar nada)
+   - **Build output directory:** `/` (raiz do projeto)
+   - Clique em **Save and Deploy**
+
+5. **Deploy concluído**
+   - O Cloudflare vai clonar o repo, fazer o deploy e fornecer um link
+   - O link será algo como: `https://neon-quarter.pages.dev`
+   - Você pode configurar um **Custom Domain** em **Custom domains** se quiser
+
+### Método 2: Via Wrangler CLI (Para Desenvolvedores)
+
+1. **Instalar o Wrangler**
+   ```bash
+   npm install -g wrangler
+   ```
+
+2. **Autenticar no Cloudflare**
+   ```bash
+   wrangler login
+   ```
+   - Isso abrirá o navegador para você autorizar o acesso
+
+3. **Deploy direto**
+   ```bash
+   # Na pasta do projeto
+   cd /caminho/para/landing-neon-quarter
+   
+   # Fazer deploy
+   wrangler pages deploy . --project-name neon-quarter
+   ```
+
+4. **Configurar deploy automático (opcional)**
+   Crie um arquivo `wrangler.toml` na raiz:
+   ```toml
+   name = "neon-quarter"
+   compatibility_date = "2026-06-14"
+   
+   [site]
+   bucket = "."
+   ```
+
+### Método 3: Drag & Drop (Mais Rápido)
+
+1. **Acesse o Cloudflare Pages**
+   - [dash.cloudflare.com/pages](https://dash.cloudflare.com/pages)
+
+2. **Criar projeto via upload**
+   - Clique em **Create a project**
+   - Selecione **Upload assets**
+   - Arraste a pasta do projeto (ou zip) para a área indicada
+   - Clique em **Deploy site**
+
+### Configurações Recomendadas
+
+Depois do deploy, configure estas opções no dashboard:
+
+| Configuração | Valor | Por que? |
+|-------------|-------|---------|
+| **Build command** | *(vazio)* | Não precisa build, é HTML estático |
+| **Root directory** | `/` | O `index.html` está na raiz |
+| **Branch** | `main` | Deploy automático ao fazer push na main |
+| **Preview deployments** | `Enabled` | Cada PR gera uma URL de preview |
+
+### DNS e Custom Domain (Opcional)
+
+Se quiser usar um domínio próprio (ex: `neonquarter.com`):
+
+1. Vá em **Custom domains** no projeto
+2. Clique em **Set up a custom domain**
+3. Digite seu domínio
+4. Siga as instruções de DNS do Cloudflare
+5. O Cloudflare gerencia automaticamente o SSL (HTTPS)
+
+### Preview Deployments
+
+Cada vez que você fizer push para uma branch que não seja a `main`, o Cloudflare cria automaticamente uma **URL de preview**:
+- Ex: `https://abc123.neon-quarter.pages.dev`
+- Útil para revisar mudanças antes de fazer merge para a `main`
+
+### Como funciona o deploy automático
+
+```
+1. Você faz push para a branch main
+   ↓
+2. Cloudflare detecta a mudança via webhook
+   ↓
+3. Cloudflare clona o repo e faz o deploy
+   ↓
+4. Site atualizado em ~30-60 segundos
+   ↓
+5. URL: https://neon-quarter.pages.dev
+```
+
+### Dica: Redirecionar para a URL correta
+
+Se você já publicou o site antes em outro lugar (GitHub Pages, etc.), adicione um redirect no `index.html` (já configurado nas meta tags do projeto):
+
+```html
+<meta property="og:url" content="https://neon-quarter.pages.dev">
+```
+
+---
+
 ## Estrutura do Projeto
 
 ```
