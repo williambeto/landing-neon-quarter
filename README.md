@@ -274,11 +274,16 @@ Se você já publicou o site antes em outro lugar (GitHub Pages, etc.), adicione
 ```
 landing-neon-quarter/
 ├── index.html          # Landing page completa (HTML + CSS + JS)
+├── assets/             # Assets visuais locais
+│   ├── hero-bg.png     # Imagem do bar interior (hero)
+│   ├── full-mock.png   # Mock completo da página (referência)
+│   ├── promos-mock.png # Mock dos cards promocionais (referência)
+│   └── icons-mock.png  # Mock dos ícones (referência)
 ├── prompt.md           # Prompt original usado para gerar o site
 └── README.md           # Este arquivo
 ```
 
-**Nota:** Este projeto é intencionalmente um arquivo único (`index.html`) para facilitar deploy em qualquer host estático sem dependências.
+**Nota:** O projeto usa `index.html` como entry point com todos os assets locais na pasta `assets/` para deploy rápido em qualquer host estático.
 
 ---
 
@@ -316,7 +321,7 @@ landing-neon-quarter/
 - **CSS3** — Custom properties, Grid, Flexbox, Animations, backdrop-filter
 - **JavaScript** — Vanilla, zero dependências, modular functions
 - **Google Fonts** — Orbitron (display) + Inter (body)
-- **Unsplash** — Imagens de referência (arcade, pinball, cocktails)
+- **Assets Locais** — Imagens do bar, mocks de referência (pasta `assets/`)
 
 ---
 
@@ -340,6 +345,21 @@ landing-neon-quarter/
 - WCAG AA color contrast
 - Form labels e error messages
 - Alt text em todas as imagens
+
+---
+
+## Assets e Mocks
+
+O projeto inclui assets visuais locais para garantir performance e coerência visual:
+
+| Asset | Descrição | Uso |
+|-------|-----------|-----|
+| `assets/hero-bg.png` | Interior do bar com neon, pinball e cocktails | Hero background |
+| `assets/full-mock.png` | Mock completo da landing page | Referência visual geral |
+| `assets/promos-mock.png` | Mock dos 3 cards promocionais | Referência para cards |
+| `assets/icons-mock.png` | Mock dos 6 ícones de features | Referência para ícones |
+
+**Nota:** Os mocks são usados como referência para direção visual. A implementação usa HTML/CSS real com SVG inline para ícones e bordas neon, mantendo a identidade do bar.
 
 ---
 
