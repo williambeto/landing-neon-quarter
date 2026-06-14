@@ -2,7 +2,7 @@
 
 Landing page para o bar fictício de arcade e pinball **Neon Quarter**.
 
-**Demo:** https://williambeto.github.io/landing-neon-quarter
+**Demo:** https://neon-quarter.pages.dev
 
 ---
 
